@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Admin Registration</title>
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="<?= base_url();?>focus/images/favicon.png">
+    <link href="<?= base_url();?>focus/css/style.css" rel="stylesheet">
+
+     <!-- Font Awesome CSS -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+<!-- Custom styles for logo -->
+<style>
+    /* Add background image to the entire page */
+    body {
+        background-image: url('<?= base_url('assets/frontend/img/rhu_loon.jpg') ?>'); /* Specify the path to your image */
+        backdrop-filter: blur(3px); /* Apply a blur effect to the background */
+        background-size: cover; /* Cover the entire viewport */
+        background-position: center; /* Center the image */
+    }
+
+    .auth-container {
+            border-radius: 50px;
+            backdrop-filter: blur(5px); /* Apply a blur effect to the background */
+            box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+            display: flex;
+            max-width: 1000px; /* Set maximum width for better responsiveness */
+            margin: auto; /* Center the container horizontally */
+            font-family: Arial, sans-serif; /* Use Arial font for the container */
+        }
+
+        .left-half {
+            flex: auto;
+            padding: 3px;
+            background-color: white; /* White background color */
+            border-top-left-radius: 50px;
+            border-bottom-left-radius: 50px;
+            display: flex;
+            justify-content: center; /* Center content horizontally */
+            align-items: center; /* Center content vertically */
+            flex-direction: column; /* Align items vertically */
+            padding-top: 30px; /* Add padding to top */
+        }
+
+        .right-half {
+            flex: auto;
+            padding: 20px;
+            backdrop-filter: blur(5px); /* Apply a blur effect to the background */
+            border-top-right-radius: 50px;
+            border-bottom-right-radius: 50px;
+        }
+
+        .logo img {
+            max-width: 100px; /* Adjust maximum width of the logo */
+            width: 100%; /* Ensure logo fills container */
+            height: auto;
+        }
+
+        .form-control-container {
+            position: relative;
+            width: 100%;
+            margin-bottom: 30px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: border-color 0.3s ease-in-out;
+            font-size: 15px;
+        }
+
+        .form-control:focus {
+            border-color: #3291e6;
+        }
+
+        .form-control-label {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: all 0.3s ease-in-out;
+            color: #808080;
+            pointer-events: none;
+            font-size: 15px;
+        }
+
+        .form-control:focus + .form-control-label,
+        .form-control:not(:placeholder-shown) + .form-control-label {
+            top: 5px;
+            font-size: 12px;
+            color: #3291e6;
+        }
+
+         /* Style for the heading */
+         .heading {
+            font-family: Arial, sans-serif; /* Use Arial font for the heading */
+            font-weight: bold; /* Make the font bold */
+            font-size: 30px; /* Increase the font size */
+            margin-bottom: 0px; /* Add some space below the heading */
+            margin-top: 0px; /* Add some space above the heading */
+            color: #3291e6; /* Set color to #3291e6 */
+        }
+</style>
+
+</head>
+
+<body class="h-100">
+    <div class="authincation h-100">
+        <div class="container-fluid h-100">
+            <div class="row justify-content-center h-100 align-items-center">
+                <div class="col-md-6">
+                    <div class="auth-container">
+                        <div class="left-half">
+                            
+                            <div class="logo-container">
+                                <!-- Insert your logo here -->
+                                <img src="<?= base_url();?>assets/ImmuTrack_logo.png" alt="Your Logo" class="logo">
+                            </div>
+                        </div>
+                        <div class="right-half">
+                            <div class="auth-form">  
+                            <h4 class="heading text-center mb-4">Sign up your account</h4>
+                            <label><?= $this->session->flashdata('msg_login'); ?></label>
+                                    <form action="<?= base_url();?>index.php/register-admin" method="POST" enctype="multipart/form-data" class="form">
+                                        <div class="form-row">
+                                            <div class="form-group col-md-4">
+                                                <div class="form-control-container">
+                                                    <input type="text" class="form-control" id="firstname" name="firstname" placeholder="">
+                                                    <label for="firstname" class="form-control-label">Firstname</label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                                <div class="form-control-container">
+                                                    <input type="text" class="form-control" id="middlename" name="middlename" placeholder="">
+                                                    <label for="middlename" class="form-control-label">Middlename</label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                                <div class="form-control-container">
+                                                    <input type="text" class="form-control" id="lastname" name="lastname" placeholder="">
+                                                    <label for="lastname" class="form-control-label">Lastname</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <div class="form-control-container">
+                                                    <input type="text" class="form-control" id="sex" name="sex" placeholder="">
+                                                    <label for="sex" class="form-control-label">Sex</label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <div class="form-control-container">
+                                                    <input type="tel" class="form-control" id="contact" name="contact" placeholder="">
+                                                    <label for="contact" class="form-control-label">Contact</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-12">
+                                                <div class="form-control-container">
+                                                    <input type="email" class="form-control" id="email" name="email" placeholder="">
+                                                    <label for="email" class="form-control-label">Email</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-12">
+                                                <div class="form-control-container">
+                                                    <input type="password" class="form-control" id="password" name="" >
+                                                    <label for="password" class="form-control-label">Password</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="text-center mt-4">
+                                            <button type="submit" class="btn btn-primary btn-block">Sign me up</button>
+                                        </div>
+                                    </form>
+
+                                    <div class="new-account mt-3">
+                                        <p>Already have an account? <a class="text-primary" href="<?= base_url();?>index.php/login">Sign in</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--**********************************
+        Scripts
+    ***********************************-->
+    <!-- Required vendors -->
+    <script src="<?= base_url();?>focus/vendor/global/global.min.js"></script>
+    <script src="<?= base_url();?>focus/js/quixnav-init.js"></script>
+    <!--endRemoveIf(production)-->
+</body>
+
+</html>
