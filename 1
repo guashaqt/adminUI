@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Admin Login</title>
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="<?= base_url();?>assets/ImmuTrack_logo.png">
+    <link href="<?= base_url();?>focus/css/style.css" rel="stylesheet">
+
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- Custom styles for logo -->
+    <style>
+        /* Add background image to the entire page */
+        body {
+            background-image: url('<?= base_url('assets/frontend/img/rhu_loon.jpg') ?>');
+            backdrop-filter: blur(3px);
+            background-size: cover;
+            background-position: center;
+            margin: 0; /* Reset default margin */
+            font-family: Arial, sans-serif;
+        }
+
+        .auth-container {
+            border-radius: 30px;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+            display: flex;
+            max-width: 90%;
+            margin: auto;
+            font-size: 16px;
+        }
+
+        .left-half, .right-half {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .left-half {
+            border-top-left-radius: 30px;
+            border-bottom-left-radius: 30px;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .right-half {
+            border-top-right-radius: 30px;
+            border-bottom-right-radius: 30px;
+            backdrop-filter: blur(5px);
+        }
+
+        .logo img {
+            max-width: 80%;
+            height: auto;
+        }
+
+        .form-control {
+            width: 100%;
+            max-width: 90%;
+            margin: auto;
+            border-radius: 30px;
+            margin-bottom: 20px;
+            padding-left: 40px;
+            font-size: 16px;
+        }
+
+        .heading {
+            font-weight: bold;
+            font-size: 24px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            color: #3291e6;
+        }
+
+        .hello-hello {
+            color: white;
+            font-size: 18px;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .hello-welcome {
+            color: white;
+            font-size: 36px;
+            margin-bottom: 0;
+        }
+
+        .form-check-label, .new-account p, .heading, button {
+            color: #3291e6;
+        }
+
+        .btn-primary {
+            background-color: #3291e6;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            width: 150px;
+            margin-top: 15px;
+        }
+
+        .form-group a {
+            color: #3291e6;
+        }
+
+        @media (max-width: 768px) {
+            .auth-container {
+                flex-direction: column;
+            }
+            .left-half, .right-half {
+                border-radius: 30px;
+                padding: 30px;
+                margin: 10px;
+                max-width: none;
+            }
+            .left-half {
+                border-bottom-left-radius: 0;
+                border-bottom-right-radius: 0;
+            }
+            .right-half {
+                border-top-left-radius: 0;
+                border-top-right-radius: 0;
+            }
+            .form-control {
+                max-width: none;
+            }
+            .btn-primary {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body class="h-100">
+    <div class="authincation h-100">
+        <div class="container-fluid h-100">
+            <div class="row justify-content-center h-100 align-items-center">
+                <div class="col-md-6">
+                    <div class="auth-container">
+                        <div class="left-half">
+                            
+                            <div class="logo-container">
+                                <!-- Insert your logo here -->
+                                <img src="<?= base_url();?>assets/ImmuTrack_logo.png" alt="Your Logo" class="logo">
+                            </div>
+                        </div>
+                        <div class="right-half">
+                            <div class="hello-hello">Hello,</div>
+                            <div class="hello-welcome">Welcome!</div>
+                            <div class="auth-form">   
+                                <h4 class="heading text-center mb-4">Sign in your account</h4>
+                                <label><?= $this->session->flashdata('msg_login'); ?></label>
+                                <form action="<?= base_url();?>index.php/login" method="POST">
+                                    <div class="form-group position-relative">
+                                        <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+                                        <i class="fas fa-envelope input-icon"></i>
+                                    </div>
+                                    <div class="form-group position-relative">
+                                        <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                                        <i class="fas fa-lock input-icon"></i>
+                                    </div>
+                                    <div class="form-row d-flex justify-content-between mt-4 mb-2">
+                                        <div class="form-group">
+                                            <div class="form-check ml-2">
+                                                <input class="form-check-input" type="checkbox" id="basic_checkbox_1">
+                                                <label class="form-check-label" for="basic_checkbox_1" style="color: white;">Remember me</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <a href="page-forgot-password.html" style="color: white;">Forgot Password?</a>
+                                        </div>
+                                    </div>
+                                    <div class="text-center">
+                                        <button type="submit" name="login_btn" class="btn btn-primary">Sign me in</button>
+                                    </div>
+                                </form>
+                                <div class="new-account mt-3">
+                                    <p style="color: white;">Don't have an account? <a class="text-primary" href="<?= base_url();?>index.php/register-admin" style="color: #3291e6;">Sign up</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--**********************************
+        Scripts
+    ***********************************-->
+    <!-- Required vendors -->
+    <script src="<?= base_url();?>focus/vendor/global/global.min.js"></script>
+    <script src="<?= base_url();?>focus/js/quixnav-init.js"></script>
+    <script src="<?= base_url();?>focus/js/custom.min.js"></script>
+
+</body>
+
+</html>
+ 
